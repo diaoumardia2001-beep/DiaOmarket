@@ -273,3 +273,34 @@ body {
     font-size: 3.75rem;    /* 60px */
   }
 }
+
+/* ============================================================
+   ANIMATIONS — Floating effects for Hero graphics
+   ============================================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite;
+}
+
