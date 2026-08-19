@@ -1,16 +1,12 @@
+import { MainLayout } from "./components/layout/MainLayout";
+import { Home } from "./pages/Home";
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900">
-          DiaO
-        </h1>
-        <p className="mt-4 text-lg text-gray-600">
-          Marketplace multi-vendeurs — Côte d'Ivoire & Afrique
-        </p>
-      </div>
-    </div>
-  )
+    <MainLayout>
+      <Home />
+    </MainLayout>
+  );
 }
 
-export default App
+export default App;
