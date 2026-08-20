@@ -9,9 +9,11 @@ import {
   User,
 } from "lucide-react";
 import { Container } from "../ui/Container";
+import { useCart } from "../../context/CartContext";
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { totalItems } = useCart();
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     isActive
@@ -116,17 +118,19 @@ export const Header: React.FC = () => {
               </button>
 
               {/* Panier */}
-              <button
-                type="button"
+              <Link
+                to="/cart"
                 className="p-2 text-text-on-dark-secondary hover:text-text-on-dark transition-colors relative cursor-pointer"
                 aria-label="Panier"
               >
                 <ShoppingBag className="h-5 w-5" />
 
-                <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[8px] font-extrabold text-white">
-                  1
-                </span>
-              </button>
+                {totalItems > 0 && (
+                  <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[8px] font-extrabold text-white">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
 
               {/* Connexion */}
               <button
@@ -159,17 +163,19 @@ export const Header: React.FC = () => {
           {/* Mobile Actions */}
           <div className="flex md:hidden items-center gap-2">
             {/* Mobile Cart */}
-            <button
-              type="button"
-              className="p-2 text-text-on-dark-secondary hover:text-text-on-dark transition-colors relative"
+            <Link
+              to="/cart"
+              className="p-2 text-text-on-dark-secondary hover:text-text-on-dark transition-colors relative cursor-pointer"
               aria-label="Panier"
             >
               <ShoppingBag className="h-5 w-5" />
 
-              <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[8px] font-extrabold text-white">
-                1
-              </span>
-            </button>
+              {totalItems > 0 && (
+                <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[8px] font-extrabold text-white">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
 
             {/* Mobile Menu Toggle */}
             <button
