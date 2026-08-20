@@ -52,11 +52,11 @@ export const Categories: React.FC = () => {
       
       <Container>
         {/* Section Header */}
-        <div className="space-y-2 mb-10 text-left">
+        <div className="space-y-2 mb-10 text-left w-full max-w-2xl">
           <h2 className="text-h2 text-text-on-dark tracking-tight">
             Explorez par catégorie
           </h2>
-          <p className="text-text-on-dark-secondary text-sm font-medium max-w-xl">
+          <p className="text-text-on-dark-secondary text-sm font-medium">
             Trouvez rapidement le smartphone ou l'accessoire qui vous correspond.
           </p>
         </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Heart, Star, MapPin, ShieldCheck } from "lucide-react";
 import type { Product } from "../../types/product";
 
@@ -8,6 +9,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const {
+    id,
     name,
     image,
     price,
@@ -22,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <div className="group bg-bg-light border border-border-light rounded-2xl shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden cursor-pointer">
+    <Link to={`/products/${id}`} className="group bg-bg-light border border-border-light rounded-2xl shadow-sm hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden cursor-pointer">
       
       {/* Image & Badge Area */}
       <div className="relative pt-[100%] bg-bg-light-secondary overflow-hidden flex items-center justify-center border-b border-border-light-subtle">
@@ -111,6 +113,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
       </div>
-    </div>
+    </Link>
   );
 };

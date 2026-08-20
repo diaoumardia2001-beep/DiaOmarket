@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   Search,
   Heart,
@@ -12,13 +13,23 @@ import { Container } from "../ui/Container";
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? "text-text-on-dark text-sm font-semibold relative after:absolute after:-bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-primary transition-colors"
+      : "text-text-on-dark-secondary text-sm font-medium hover:text-text-on-dark transition-colors";
+
+  const getMobileNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? "px-3 py-2.5 rounded-md text-sm font-semibold text-text-on-dark bg-bg-surface-secondary block text-left"
+      : "px-3 py-2.5 rounded-md text-sm font-medium text-text-on-dark-secondary hover:text-text-on-dark hover:bg-bg-surface-secondary block text-left transition-colors";
+
   return (
     <header className="bg-bg-dark border-b border-border-dark py-3 sticky top-0 z-navigation">
       <Container>
         <div className="flex items-center justify-between gap-4">
           {/* Logo & Branding */}
-          <a
-            href="/"
+          <Link
+            to="/"
             aria-label="Accueil DiaO"
             className="flex shrink-0 items-center"
           >
@@ -36,23 +47,23 @@ export const Header: React.FC = () => {
                 object-contain
               "
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-8">
-            <a
-              href="#"
-              className="text-text-on-dark text-sm font-semibold relative after:absolute after:-bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-primary transition-colors"
+            <NavLink
+              to="/"
+              className={getNavLinkClass}
             >
               Accueil
-            </a>
+            </NavLink>
 
-            <a
-              href="#"
-              className="text-text-on-dark-secondary text-sm font-medium hover:text-text-on-dark transition-colors"
+            <NavLink
+              to="/marketplace"
+              className={getNavLinkClass}
             >
               Marketplace
-            </a>
+            </NavLink>
 
             <a
               href="#"
@@ -216,23 +227,26 @@ export const Header: React.FC = () => {
 
               {/* Mobile Navigation */}
               <nav className="flex flex-col gap-2">
-                <a
-                  href="#"
-                  className="px-3 py-2.5 rounded-md text-sm font-semibold text-text-on-dark bg-bg-surface-secondary"
+                <NavLink
+                  to="/"
+                  className={getMobileNavLinkClass}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Accueil
-                </a>
+                </NavLink>
 
-                <a
-                  href="#"
-                  className="px-3 py-2.5 rounded-md text-sm font-medium text-text-on-dark-secondary hover:text-text-on-dark hover:bg-bg-surface-secondary transition-colors"
+                <NavLink
+                  to="/marketplace"
+                  className={getMobileNavLinkClass}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Marketplace
-                </a>
+                </NavLink>
 
                 <a
                   href="#"
-                  className="px-3 py-2.5 rounded-md text-sm font-medium text-text-on-dark-secondary hover:text-text-on-dark hover:bg-bg-surface-secondary transition-colors"
+                  className="px-3 py-2.5 rounded-md text-sm font-medium text-text-on-dark-secondary hover:text-text-on-dark hover:bg-bg-surface-secondary block text-left transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Boutiques
                 </a>
